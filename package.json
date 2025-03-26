@@ -1,0 +1,16 @@
+{
+  "name": "personalsitebackend",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@confluentinc/kafka-javascript": "^1.2.0",
+    "kafkajs": "^2.2.4",
+    "mongodb": "^6.15.0"
+  }
+}
