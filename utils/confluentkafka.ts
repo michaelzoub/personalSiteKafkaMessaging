@@ -7,10 +7,11 @@ const KAFKA_API_SECRET = process.env.KAFKA_API_SECRET|| "";
 
 const kafka = new Kafka({ 
     brokers: ["pkc-619z3.us-east1.gcp.confluent.cloud:9092"],
+    ssl: true,
     sasl: {
         mechanism: "plain", // or "scram-sha-256" depending on your Confluent Cloud configuration
-        username: KAFKA_API_KEY, // Your Confluent Cloud API key
-        password: KAFKA_API_SECRET, // Your Confluent Cloud API secret
+        username: KAFKA_API_KEY, 
+        password: KAFKA_API_SECRET, 
     }
  })
 const consumer = kafka.consumer({ groupId: "nodejs-group-1" });
