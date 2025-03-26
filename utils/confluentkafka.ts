@@ -39,8 +39,8 @@ export async function consumerFunc() {
 
             if (batchArray.length >= BATCH_SIZE) {
                 console.log("batchSize big");
-                batchArray = [];
                 await processBatch(batchArray, collection);
+                batchArray = [];
             }
         }
     });
