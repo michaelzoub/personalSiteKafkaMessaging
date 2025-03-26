@@ -2,7 +2,17 @@ import { Kafka } from "kafkajs";
 import { connectToDatabase } from "./connectToDatabase";
 import type { clickData } from "../types/clickData";
 
-const kafka = new Kafka({ brokers: ["pkc-619z3.us-east1.gcp.confluent.cloud:9092"] })
+const KAFKA_API_KEY = process.env.KAFKA_API_KEY || "";
+const KAFKA_API_SECRET = process.env.KAFKA_API_SECRET|| "";
+
+const kafka = new Kafka({ 
+    brokers: ["pkc-619z3.us-east1.gcp.confluent.cloud:9092"],
+    sasl: {
+        mechanism: "plain", // or "scram-sha-256" depending on your Confluent Cloud configuration
+        username: KAFKA_API_KEY, // Your Confluent Cloud API key
+        password: KAFKA_API_SECRET, // Your Confluent Cloud API secret
+    }
+ })
 const consumer = kafka.consumer({ groupId: "nodejs-group-1" });
 
 export async function consumerFunc() {
